@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_01_094123) do
+ActiveRecord::Schema.define(version: 2021_02_01_095956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_categories_on_list_id"
+  end
+
+  create_table "classifications", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_classifications_on_category_id"
+    t.index ["product_id"], name: "index_classifications_on_product_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "title"
+    t.string "picture"
+    t.date "birth_date"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_lists_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "picture"
+    t.string "url"
+    t.float "price"
+    t.bigint "list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_products_on_list_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +65,9 @@ ActiveRecord::Schema.define(version: 2021_02_01_094123) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "categories", "lists"
+  add_foreign_key "classifications", "categories"
+  add_foreign_key "classifications", "products"
+  add_foreign_key "lists", "users"
+  add_foreign_key "products", "lists"
 end
