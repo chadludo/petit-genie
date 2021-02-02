@@ -2,17 +2,23 @@
   width: 100%;
   height: 80px;
   padding: 0 15px;
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: lightgrey;
+  background-color: transparent;
+}
+
+.navbar h1 {
+  font-size: 22px;
+  color: white;
 }
 
 .navbar .navbar-brand {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background: yellow;
 }
 
 .navbar .navbar-brand img {
@@ -20,23 +26,26 @@
 }
 
 .nav-menu {
-  width: 120px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background: red;
 }
 
 .nav-menu .nav-icon {
-  width: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: blue;
+  margin-left: 15px;
+  color: white;
+}
+
+.nav-menu .nav-icon .icon {
+  width: 25px;
+  fill: white;
 }
 
 .txt-menu {
  font-size: 14px;
- color: lightgrey;
+ color: white;
 }
