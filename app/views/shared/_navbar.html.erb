@@ -9,9 +9,18 @@
       <p class="txt-menu">mes listes</p>
     </div>
 
-    <div class="nav-icon">
-      <%= image_tag "user.svg", alt: "mon compte", class: "icon" %>
-      <p class="txt-menu">mon compte</p>
+    <% if user_signed_in? %>
+      <div class="nav-icon">
+        <%= link_to profiles_path do %>
+          <%= image_tag "user.svg", alt: "mon compte", class: "icon" %>
+          <p class="txt-menu">mon compte</p>
+        <% end %>
+    <% else %>
+        <%= link_to new_user_session_path do %>
+          <%= image_tag "user.svg", alt: "mon compte", class: "icon" %>
+          <p class="txt-menu">Se connecter</p>
+        <% end %>
+    <% end %>
     </div>
   </div>
 

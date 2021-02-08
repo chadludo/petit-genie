@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :lists
   resources :products
   resources :categories
+  resource :profiles, only: [:show]
 end

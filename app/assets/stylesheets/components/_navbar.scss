@@ -1,13 +1,13 @@
 .navbar {
   width: 100%;
-  height: 80px;
+  height: 60px;
   padding: 0 15px;
-  position: fixed;
+  position: sticky;
   top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: transparent;
+  background-color: $green-genius;
 }
 
 .navbar h1 {
@@ -38,6 +38,7 @@
   align-items: center;
   margin-left: 15px;
   color: white;
+  fill: white;
 }
 
 .nav-menu .nav-icon .icon {

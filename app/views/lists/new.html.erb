@@ -1,0 +1,7 @@
+<%= form_for(@list) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :birth_date %>
+  <%= select_date Date.today, :prefix => :birth_date %>
+  <%= f.submit %>
+<% end %>

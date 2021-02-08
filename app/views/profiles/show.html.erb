@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Mes listes</h2>
+
+  <div class="cards">
+    <% @lists.each do |list| %>
+
+        <div class="card">
+          <div class="title">
+            <p><%= list.title %></p>
+          </div>
+          <div class="date">
+            <p><%= list.birth_date %></p>
+          </div>
+          <%= link_to "voir", list_path(list) %>
+        </div>
+      <% end %>
+  </div>
+
+<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+</div>
