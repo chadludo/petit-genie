@@ -1,7 +1,7 @@
-List.destroy_all
-Category.destroy_all
-Product.destroy_all
 User.destroy_all
+List.destroy_all
+Product.destroy_all
+Category.destroy_all
 
 
 puts 'Create users'
@@ -16,6 +16,10 @@ puts 'Create lists'
 file_leo_list = File.open(Rails.root.join('db/fixtures/lists/cover.jpg'))
 leo_list = List.create!(title: 'Liste de naissance de Léo', birth_date: '15/02/1995', user: marc)
 leo_list.picture.attach(io: file_leo_list, filename: 'cover.jpg', content_type: 'image/jpg')
+
+file_pio_list = File.open(Rails.root.join('db/fixtures/lists/baby-pio.jpg'))
+pio_list = List.create!(title: 'Liste de naissance de Pio', birth_date: '12/04/2021', user: marc)
+pio_list.picture.attach(io: file_pio_list, filename: 'baby-pio.jpg', content_type: 'image/jpg')
 
 
 puts 'Create categories'

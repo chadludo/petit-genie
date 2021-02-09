@@ -1,28 +1,41 @@
 .cards {
-  height: 150px;
+  height: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .card {
-  width: 150px;
-  height: 150px;
-  padding: 15px;
+  width: 200px;
+  height: 250px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: space-between;
-  justify-content: center;
-  box-shadow: 0 0 10px rgba(0,0,0,.2);
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 5px rgba(0,0,0,.1);
   border-radius: 5px;
   text-align: center;
+  transition: 0.2s box-shadow ease-in, transform 0.2s ease-in;
 }
 
-.card .title {
-
+.card:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,.2);
+  transform: translateY(-6px);
 }
 
-.card .date {
+.card-pict {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
 
+.card .title h3 {
+  color: $blue;
+  font-weight: 400;
+}
+
+.card .date p {
+  font-size: 16px;
 }

@@ -1,0 +1,16 @@
+<div class="container">
+
+    <h2>Modifier la liste</h2>
+    <p>Apportez les modifications à votre liste</p>
+
+  <%= simple_form_for [ @user, @list ] do |f| %>
+    <%= f.input :title, label: "Nom de votre liste", placeholder: "Liste de naissance de Philéas" %>
+    <%= f.input :birth_date, label: "Date de naissance", placeholder: "15/10/1985" %>
+    <%= f.input :photo, as: :file %>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Modifier ma liste", class: "btn-primary" %>
+    </div>
+  <% end %>
+
+ </div>

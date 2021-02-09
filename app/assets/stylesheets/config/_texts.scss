@@ -1,4 +1,4 @@
-h1, h2, h3, h4, button {
+h1, h2, h3, h4 {
   font-family: 'mrs-eaves-roman-all-small-ca', serif;
   font-style: normal;
   margin: 0;
@@ -17,8 +17,9 @@ h2 {
 }
 
 h3 {
-  font-size: 16px;
-  line-height: 16px;
+  font-family: 'mrs-eaves', serif;
+  font-size: 20px;
+  line-height: 22px;
 }
 
 p {
@@ -26,7 +27,7 @@ p {
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
-  line-height: 22px;
+  line-height: 26px;
   text-align: center;
   margin: 0;
 }
@@ -34,4 +35,5 @@ p {
 a {
   color: #0F7173;
   text-decoration: none;
+  margin: 0;
 }

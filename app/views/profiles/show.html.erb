@@ -5,16 +5,23 @@
     <% @lists.each do |list| %>
 
         <div class="card">
+          <%= image_tag list.picture, class: "card-pict" %>
           <div class="title">
-            <p><%= list.title %></p>
+            <h3><%= list.title %></h3>
           </div>
           <div class="date">
             <p><%= list.birth_date %></p>
           </div>
-          <%= link_to "voir", list_path(list) %>
+          <%= link_to "voir", list_path(list), class: "btn-secondary" %>
         </div>
       <% end %>
   </div>
 
-<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+  <div class="cards">
+    <%= link_to new_list_path do %>
+      <button class="btn-primary">Créer une liste</button>
+    <% end %>
+  </div>
+
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
 </div>

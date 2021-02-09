@@ -15,7 +15,6 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     @list.save
 
-    # no need for app/views/restaurants/create.html.erb
     redirect_to profiles_path
   end
 
@@ -23,13 +22,23 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
-  def destroy
+  def update
+    @list = List.find(params[:id])
+    @list.update(list_params)
 
+    redirect_to profiles_path(@profile)
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+
+    redirect_to profiles_path(@profile)
   end
 
   private
 
   def list_params
-    params.require(:list).permit(:title, :birth_date)
+    params.require(:list).permit(:title, :birth_date, :picture)
   end
 end

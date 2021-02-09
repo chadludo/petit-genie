@@ -1,0 +1,18 @@
+<div class="container">
+
+    <h2>Ajouter un nouveau produit</h2>
+    <p>Remplissez le formulaire avec les information du produit que vous souhaitez ajouter</p>
+
+  <div class="form-container">
+    <%= simple_form_for [ @user, @product ] do |f| %>
+      <%= f.input :name, label: "Nom du produit", placeholder: "Couffin en osier" %>
+      <%= f.input :url, label: "Lien du produit", placeholder: "www.marque.com/couffin..." %>
+      <%= f.input :price, label: "Prix du produit", placeholder: "50" %>
+      <%= f.input :photo, as: :file %>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Ajouter un nouveau produit", class: "btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+ </div>

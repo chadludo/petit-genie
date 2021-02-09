@@ -3,4 +3,15 @@
     <h2><%= @list.title %></h2>
     <p><%= @list.birth_date %></p>
   </div>
+
+  <p>Démarrer votre liste !<br>ajouter un souhait ou créer vos catégories.</p>
+
+  <div class="actions">
+    <%= link_to new_category_path do %>
+    <button class="ternary-btn">Ajouter une catégorie</button>
+    <% end %>
+    <%= link_to new_product_path do %>
+      <button class="primary-btn">Ajouter un souhait</button>
+    <% end %>
+  </div>
 </div>
