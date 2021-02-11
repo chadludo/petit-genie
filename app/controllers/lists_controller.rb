@@ -13,7 +13,8 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-    @list.save
+    @list.user = current_user
+    @list.save!
 
     redirect_to profiles_path
   end
