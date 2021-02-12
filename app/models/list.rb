@@ -4,6 +4,6 @@ class List < ApplicationRecord
   has_many :category, dependent: :destroy
   has_one_attached :picture
 
-  # validates :title, presence: true
-  # validates :birth_date, presence: true
+  validates :title, presence: true
+  validates :birth_date, presence: true
 end

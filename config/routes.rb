@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   devise_for :users
-  resources :lists
-  resources :products
-  resources :categories
+
+  resources :lists do
+    resources :categories do
+      resources :products
+    end
+    resources :products
+  end
+
   resource :profiles, only: [:show]
 end

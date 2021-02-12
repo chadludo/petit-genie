@@ -1,17 +1,44 @@
 <div class="container">
-  <div class="banner-list">
+  <div class="banner-list" style="background: url(<%= url_for(@list.picture) %>) no-repeat;">
     <h2><%= @list.title %></h2>
     <p><%= @list.birth_date %></p>
   </div>
 
   <p>Démarrer votre liste !<br>ajouter un souhait ou créer vos catégories.</p>
 
+  <div class="product-container">
+    <% @list.product.each do |product| %>
+        <div class="card">
+          <% if product.picture.attached? %>
+            <%= image_tag product.picture, class: "card-pict" %>
+          <% end %>
+          <div class="title">
+            <h3><%= product.name %></h3>
+          </div>
+          <div class="price">
+            <p><%= product.price %> €</p>
+          </div>
+          <%= link_to "voir", product.url, class: "btn-secondary" %>
+        </div>
+      <% end %>
+  </div>
+
+  <div class="cat-container">
+    <% @list.category.each do |category| %>
+      <div class="category-spacer">
+        <p><%= category.name %></p>
+      </div>
+    <% end %>
+  </div>
+
   <div class="actions">
-    <%= link_to new_category_path do %>
+    <%= link_to new_list_category_path(@list) do %>
     <button class="ternary-btn">Ajouter une catégorie</button>
     <% end %>
-    <%= link_to new_product_path do %>
+    <%= link_to new_list_product_path(@list) do %>
       <button class="primary-btn">Ajouter un produit</button>
     <% end %>
   </div>
+
+
 </div>
