@@ -1,21 +1,17 @@
 class ProductsController < ApplicationController
-  def index
-    @products = Product.all
-  end
+  before_action :set_list, only: [:new, :create, :edit, :update]
 
   def show
     @product = Product.find(params[:id])
   end
 
   def new
-    @list = List.find(params[:list_id])
     @product = Product.new
   end
 
   def create
-    @list = List.find(params[:list_id])
-
-    @product = @list.product.new(product_params)
+    @product = Product.new(product_params)
+    @product.list = @list
     @product.save!
 
     redirect_to list_path(@list)
@@ -25,7 +21,25 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def update
+    @product = Product.find(params[:id])
+    @list.product.update(product_params)
+
+    redirect_to list_path(@list)
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+
+    redirect_to list_path(@list.product)
+  end
+
   private
+
+  def set_list
+    @list = List.find(params[:list_id])
+  end
 
   def product_params
     params.require(:product).permit(:name, :url, :price, :picture)

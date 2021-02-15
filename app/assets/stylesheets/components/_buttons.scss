@@ -1,10 +1,10 @@
 .btn-primary {
-  padding: 5px 15px;
+  padding: 5px 20px;
   border-radius: 5px;
   color: white;
   background-color: $green-genius;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   transition: .4s background-color ease;
 }
 
@@ -16,19 +16,37 @@
   width: 50%;
   margin: 10px auto;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   background-color: $blue;
   color: white;
-  padding: 5px 15px;
+  padding: 5px 20px;
   border-radius: 3px;
 }
 
 .btn-ternary {
-  padding: 5px 15px;
+  padding: 5px 20px;
   border: 1px solid $blue;
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   color: $blue;
   padding: 5px;
+  transition: all .4s ease;
+}
+
+.btn-ternary:hover {
+  background-color: $blue;
+  color: white;
+  border: 1px solid $blue;
+}
+
+.btn-delete, .btn-edit {
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: $green-genius;
 }

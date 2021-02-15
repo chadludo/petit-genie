@@ -1,0 +1,18 @@
+<div class="container">
+
+    <h2>Modifier ce produit</h2>
+    <p>Modifiez les informations de votre produit.</p>
+
+  <div class="form-container">
+    <%= simple_form_for [ @list, @product ] do |f| %>
+      <%= f.input :name, label: "Nom du produit", placeholder: "Couffin en osier" %>
+      <%= f.input :url, label: "Lien du produit", placeholder: "www.marque.com/couffin..." %>
+      <%= f.input :price, label: "Prix du produit", placeholder: "50" %>
+      <%= f.input :picture, as: :file %>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Modifier ce produit", class: "btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+ </div>
