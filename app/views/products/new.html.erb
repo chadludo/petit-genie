@@ -4,10 +4,11 @@
     <p>Remplissez le formulaire avec les information du produit que vous souhaitez ajouter</p>
 
   <div class="form-container">
-    <%= simple_form_for [ @list, @product ] do |f| %>
+    <%= simple_form_for([ @list, @product ]) do |f| %>
       <%= f.input :name, label: "Nom du produit", placeholder: "Couffin en osier" %>
       <%= f.input :url, label: "Lien du produit", placeholder: "www.marque.com/couffin..." %>
       <%= f.input :price, label: "Prix du produit", placeholder: "50" %>
+      <%= f.association :category, label: "Pour dormir"%>
       <%= f.input :picture, as: :file %>
 
       <div class="form-actions">

@@ -5,14 +5,18 @@
 
   <div class="form-container">
     <%= simple_form_for [ @list, @product ] do |f| %>
-      <%= f.input :name, label: "Nom du produit", placeholder: "Couffin en osier" %>
-      <%= f.input :url, label: "Lien du produit", placeholder: "www.marque.com/couffin..." %>
-      <%= f.input :price, label: "Prix du produit", placeholder: "50" %>
+      <%= f.input :name, label: "Nom du produit" %>
+      <%= f.input :url, label: "Lien du produit" %>
+      <%= f.input :price, label: "Prix du produit" %>
       <%= f.input :picture, as: :file %>
 
       <div class="form-actions">
         <%= f.button :submit, "Modifier ce produit", class: "btn-primary" %>
       </div>
     <% end %>
+  </div>
+
+  <div class="sub-actions">
+    <%= link_to "Retourner à la liste", list_path %>
   </div>
  </div>

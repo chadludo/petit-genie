@@ -1,9 +1,12 @@
 .product-container {
   height: 300px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+.cat-container {
 }
 
 .actions, .sub-actions {

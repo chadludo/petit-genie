@@ -6,7 +6,6 @@ class ListsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def new
@@ -22,6 +21,7 @@ class ListsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def update

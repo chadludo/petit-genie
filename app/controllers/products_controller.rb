@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_list, only: [:new, :create, :edit, :update]
+  before_action :set_list, only: [:new, :edit, :update]
 
   def show
     @product = Product.find(params[:id])
@@ -11,10 +11,13 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @list = List.find(params[:list_id])
     @product.list = @list
-    @product.save!
 
-    redirect_to list_path(@list)
+    if @product.save!
+      redirect_to list_path(@list)
+    else
+      render :new
   end
 
   def edit

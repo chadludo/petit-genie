@@ -1,11 +1,12 @@
 <div class="container">
+
   <div class="banner-list" style="background: url(<%= url_for(@list.picture) %>) no-repeat; background-size: cover;">
     <h2><%= @list.title %></h2>
     <p><%= @list.birth_date %></p>
     <div class="actions">
-      <%= link_to "Ajouter une catégorie", new_list_category_path(@list), class: "btn-ternary" %>
-      <%= link_to "Ajouter un produit", new_list_product_path(@list), class: "btn-primary"  %>
-  </div>
+      <%= link_to "Ajouter une catégorie", new_category_path(@list), class: "btn-ternary" %>
+      <%= link_to "Ajouter un produit", new_product_path(@list), class: "btn-primary"  %>
+    </div>
   </div>
 
   <% if @list.product.count <= 0 %>
@@ -15,54 +16,56 @@
   <% end %>
 
   <div class="product-container">
+    <div class="cat-container">
 
-    <% @list.product.each do |product| %>
-        <div class="card">
-
-          <div class="edit-container">
-            <%= link_to edit_list_product_path(@list, @product) do %>
-              <div class="btn-edit">
-                <%= image_tag "edit.svg", class: "icon" %>
-              </div>
-            <% end %>
-            <%= link_to @product_path, method: :delete, data: { confirm: "êtes-vous sûr de vouloir supprimer ce produit ?"} do %>
-              <div class="btn-delete">
-                <%= image_tag "trash.svg", class: "icon" %>
-              </div>
-            <% end %>
+        <% @list.category.each do |category| %>
+          <div class="category-spacer">
+            <p><%= category.name %></p>
           </div>
 
-          <% if product.picture.attached? %>
-            <%= image_tag product.picture, class: "card-pict" %>
+        <div class="cards">
+          <% @list.product.each do |product| %>
+              <div class="card">
+                <div class="edit-container">
+                  <%= link_to edit_product_path(@product) do %>
+                    <div class="btn-edit">
+                      <%= image_tag "edit.svg", class: "icon" %>
+                    </div>
+                  <% end %>
+                  <%= link_to @product_path, method: :delete, data: { confirm: "êtes-vous sûr de vouloir supprimer ce produit ?"} do %>
+                    <div class="btn-delete">
+                      <%= image_tag "trash.svg", class: "icon" %>
+                    </div>
+                  <% end %>
+                </div>
+
+                <% if product.picture.attached? %>
+                  <%= image_tag product.picture, class: "card-pict" %>
+                <% end %>
+                <div class="title">
+                  <h3><%= product.name %></h3>
+                </div>
+                <div class="price">
+                  <p><%= product.price %> €</p>
+                </div>
+                <%= @list.category.name %>
+                <%= link_to "voir", product.url, target: "_blank", class: "btn-secondary" %>
+              </div>
           <% end %>
-          <div class="title">
-            <h3><%= product.name %></h3>
-          </div>
-          <div class="price">
-            <p><%= product.price %> €</p>
-          </div>
-          <%= link_to "voir", product.url, target: "_blank", class: "btn-secondary" %>
         </div>
-      <% end %>
+        <% end %>
+    </div>
 
-  </div>
-
-  <div class="cat-container">
-    <% @list.category.each do |category| %>
-      <div class="category-spacer">
-        <p><%= category.name %></p>
+    <div>
+      <div class="actions">
+        <%= link_to "Ajouter une catégorie", new_category_path(@list), class: "btn-ternary" %>
+        <%= link_to "Ajouter un produit", new_list_product_path(@list), class: "btn-primary"  %>
       </div>
-    <% end %>
-  </div>
 
-  <div class="actions">
-    <%= link_to "Ajouter une catégorie", new_list_category_path(@list), class: "btn-ternary" %>
-    <%= link_to "Ajouter un produit", new_list_product_path(@list), class: "btn-primary"  %>
+      <div class="sub-actions">
+      <%= link_to "Supprimer la liste", @list_path, method: :delete, data: { confirm: "êtes-vous sûr ?"} %> |
+      <%= link_to "Modifier la liste", edit_list_path(@list) %>
+      </div>
+    </div>
   </div>
-  <div class="sub-actions">
-  <%= link_to "Supprimer la liste", @list_path, method: :delete, data: { confirm: "êtes-vous sûr ?"} %> |
-  <%= link_to "Modifier la liste", edit_list_path(@list) %>
-  </div>
-
-
 </div>
