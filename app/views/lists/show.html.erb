@@ -7,7 +7,7 @@
       <%= link_to "Ajouter une catégorie", new_category_path(@list), class: "btn-ternary" %>
       <%= link_to "Ajouter un produit", new_product_path(@list), class: "btn-primary"  %>
     </div>
-  </div>
+  </div>s
 
   <% if @list.product.count <= 0 %>
     <p>Démarrer votre liste !<br>ajouter un souhait ou créer vos catégories.</p>
@@ -59,7 +59,7 @@
     <div>
       <div class="actions">
         <%= link_to "Ajouter une catégorie", new_category_path(@list), class: "btn-ternary" %>
-        <%= link_to "Ajouter un produit", new_list_product_path(@list), class: "btn-primary"  %>
+      <%= link_to "Ajouter un produit", new_product_path(@list), class: "btn-primary"  %>
       </div>
 
       <div class="sub-actions">
