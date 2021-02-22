@@ -12,6 +12,8 @@ h1 {
 }
 
 h2 {
+  box-sizing: content-box;
+  margin: 20px 0;
   font-size: 36px;
   line-height: 36px;
 }

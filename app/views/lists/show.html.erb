@@ -4,15 +4,15 @@
     <h2><%= @list.title %></h2>
     <p><%= @list.birth_date %></p>
     <div class="actions">
-      <%= link_to "Ajouter une catégorie", new_category_path(@list), class: "btn-ternary" %>
-      <%= link_to "Ajouter un produit", new_product_path(@list), class: "btn-primary"  %>
+      <%= link_to "Ajouter une catégorie", new_category_path(@list.category), class: "btn-ternary" %>
+      <%= link_to "Ajouter un produit", new_product_path(@list.product), class: "btn-primary"  %>
     </div>
-  </div>s
+  </div>
 
   <% if @list.product.count <= 0 %>
     <p>Démarrer votre liste !<br>ajouter un souhait ou créer vos catégories.</p>
   <% else %>
-    <p>Vos souhaits</p>
+    <h2>Vos souhaits</h2>
   <% end %>
 
   <div class="product-container">
@@ -27,12 +27,12 @@
           <% @list.product.each do |product| %>
               <div class="card">
                 <div class="edit-container">
-                  <%= link_to edit_product_path(@product) do %>
+                  <%= link_to edit_product_path(product) do %>
                     <div class="btn-edit">
                       <%= image_tag "edit.svg", class: "icon" %>
                     </div>
                   <% end %>
-                  <%= link_to @product_path, method: :delete, data: { confirm: "êtes-vous sûr de vouloir supprimer ce produit ?"} do %>
+                  <%= link_to product_path, method: :delete, data: { confirm: "êtes-vous sûr de vouloir supprimer ce produit ?"} do %>
                     <div class="btn-delete">
                       <%= image_tag "trash.svg", class: "icon" %>
                     </div>
@@ -58,8 +58,8 @@
 
     <div>
       <div class="actions">
-        <%= link_to "Ajouter une catégorie", new_category_path(@list), class: "btn-ternary" %>
-      <%= link_to "Ajouter un produit", new_product_path(@list), class: "btn-primary"  %>
+        <%= link_to "Ajouter une catégorie", new_category_path(@list.category), class: "btn-ternary" %>
+      <%= link_to "Ajouter un produit", new_product_path(@list.product), class: "btn-primary"  %>
       </div>
 
       <div class="sub-actions">

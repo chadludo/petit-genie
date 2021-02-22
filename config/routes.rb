@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resource :profiles, only: [:show]
-  resources :categories, only: [:new, :create, :destroy]
   resources :lists
-  resources :products, only: [:new, :edit]
+  resources :categories, only: [:new, :create, :destroy]
+  resources :products, only: [:new, :create, :edit, :destroy]
 end

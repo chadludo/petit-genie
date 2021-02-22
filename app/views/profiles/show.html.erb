@@ -4,7 +4,7 @@
   <div class="cards">
     <% @lists.each do |list| %>
         <div class="card">
-          <%= image_tag list.picture, class: "card-pict" %>
+          <div class="card-pict" style="background: url(<%= url_for(list.picture) %>) no-repeat; background-size: cover;"></div>
           <div class="title">
             <h3><%= list.title %></h3>
           </div>

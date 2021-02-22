@@ -8,15 +8,19 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @list = List.find(params[:list_id])
     @category = Category.new
   end
 
   def create
-    @list = List.find(params[:list_id])
-    @category = @list.category.create(category_params)
+    @list = List.find(params[:id])
+    @category = Category.create(category_params)
+    @category.list = @list
 
-    redirect_to list_path(@list)
+    if @category.save!
+      redirect_to list_path(@list)
+    else
+      render :new
+    end
   end
 
   private

@@ -1,6 +1,4 @@
 class ProductsController < ApplicationController
-  before_action :set_list, only: [:new, :edit, :update]
-
   def show
     @product = Product.find(params[:id])
   end
@@ -10,14 +8,15 @@ class ProductsController < ApplicationController
   end
 
   def create
+    @list = List.find(params[:id])
     @product = Product.new(product_params)
-    @list = List.find(params[:list_id])
     @product.list = @list
 
     if @product.save!
       redirect_to list_path(@list)
     else
       render :new
+    end
   end
 
   def edit
@@ -39,10 +38,6 @@ class ProductsController < ApplicationController
   end
 
   private
-
-  def set_list
-    @list = List.find(params[:list_id])
-  end
 
   def product_params
     params.require(:product).permit(:name, :url, :price, :picture)
