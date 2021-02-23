@@ -1,13 +1,10 @@
 <div class="container">
-      <h2>Ajouter une catégorie</h2>
+  <h2>Ajouter une catégorie</h2>
 
   <div class="form-container">
-      <%= simple_form_for [@list, @category] do |f| %>
-        <%= f.input :name, label: "Nom de la catégorie" %>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Créer", class: "btn-primary" %>
-      </div>
+    <%= simple_form_for [@list, @category] do |f| %>
+      <%= f.input :name, label: "Nom de la catégorie" %>
+      <%= f.button :submit, "Créer", class: "btn-primary" %>
     <% end %>
   </div>
- </div>
+</div>

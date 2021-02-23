@@ -4,11 +4,12 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @list = List.find(params[:list_id])
     @product = Product.new
   end
 
   def create
-    @list = List.find(params[:id])
+    @list = List.find(params[:list_id])
     @product = Product.new(product_params)
     @product.list = @list
 

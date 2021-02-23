@@ -8,12 +8,13 @@ class CategoriesController < ApplicationController
   end
 
   def new
+    @list = List.find(params[:list_id])
     @category = Category.new
   end
 
   def create
-    @list = List.find(params[:id])
-    @category = Category.create(category_params)
+    @list = List.find(params[:list_id])
+    @category = Category.new(category_params)
     @category.list = @list
 
     if @category.save!
