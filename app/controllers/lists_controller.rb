@@ -31,7 +31,8 @@ class ListsController < ApplicationController
 
   def destroy
     @list.destroy
-    redirect_to profiles_path(@profile)
+
+    redirect_to profiles_path
   end
 
   private

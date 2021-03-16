@@ -26,21 +26,21 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @list.product.update(product_params)
+    @product.update(product_params)
 
-    redirect_to list_path(@list)
+    redirect_to lists_path(@list)
   end
 
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
+    @product.destroy!
 
-    redirect_to list_path(@list.product)
+    redirect_to lists_path(@list)
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:name, :url, :price, :picture)
+    params.require(:product).permit(:name, :url, :price, :picture, category_ids: [])
   end
 end

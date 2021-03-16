@@ -1,14 +1,15 @@
 <div class="container">
-      <h2>Ajouter un nouveau produit</h2>
+    <h2>Ajouter un nouveau produit</h2>
     <p>Remplissez le formulaire avec les information du produit que vous souhaitez ajouter</p>
+
   <div class="form-container">
     <%= simple_form_for [@list, @product] do |f| %>
       <%= f.input :name, label: "Nom du produit", placeholder: "Couffin en osier" %>
       <%= f.input :url, label: "Lien du produit", placeholder: "www.marque.com/couffin..." %>
       <%= f.input :price, label: "Prix du produit", placeholder: "50" %>
-      <%= f.input :category, as: :select %>
+      <%= f.association :category, collection: Category.order(:name), as: :check_boxes %>
       <%= f.input :picture, as: :file %>
       <%= f.button :submit, "Ajouter un nouveau produit", class: "btn-primary" %>
     <% end %>
   </div>
- </div>
+</div>
