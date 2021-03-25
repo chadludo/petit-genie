@@ -16,10 +16,10 @@
   <p>Vous pouvez aussi copier/coller l'url de la page du produit que vous souhaitez ajouter</p>
 
   <div class="form-container">
-    <%= #simple_form_for [@list, @product] do |f| %>
-      <%= #f.input :url, label: "Lien du produit", placeholder: "www.marque.com/couffin..." %>
-      <%= #f.button :submit, "Ajouter un nouveau produit", class: "btn-primary" %>
-    <% #end %>
+    <%= simple_form_for [@list, @product] do |f| %>
+      <%= f.input :url, label: "Lien du produit", placeholder: "www.marque.com/couffin..." %>
+      <%= f.button :submit, "Ajouter un nouveau produit", class: "btn-primary" %>
+    <% end %>
   </div>
 
 </div>
