@@ -33,7 +33,6 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'nokogiri'
 gem 'open-uri'
-gem 'mimemagic', '~> 0.4.0'
 
 group :development, :test do
   gem 'pry-byebug'
