@@ -42,7 +42,10 @@
 
                 <% if product.picture.attached? %>
                   <%= image_tag product.picture, class: "card-pict" %>
+                <% else %>
+                  <%= image_tag("gift.png", class: "card-pict") %>
                 <% end %>
+
                 <div class="title">
                   <h3><%= product.name %></h3>
                 </div>

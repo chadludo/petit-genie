@@ -1,3 +1,6 @@
+require 'Open-uri'
+require 'Nokogiri'
+
 class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
@@ -9,6 +12,9 @@ class ProductsController < ApplicationController
   end
 
   def create
+    # Scraping method
+    scrape
+    # Classic create method
     @list = List.find(params[:list_id])
     @product = Product.new(product_params)
     @product.list = @list
@@ -18,6 +24,31 @@ class ProductsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def scrape
+    # Create a product with scraping method
+    # 1 - Get the URL from form in create view
+    @list = List.find(params[:list_id])
+    @product = Product.new(product_params)
+    @product.list = @list
+    page_url = @product.url
+    # 2 - Parse the URL in nokogiri
+    doc = Nokogiri::HTML(URI.open(page_url))
+    # 3 - select all items with css selector
+    items = doc.css(".j-wrapper-content")
+    # 4 - Iterate on each item to save them
+
+    items.each do |item|
+      @product.name = item.css("h1").text.to_s
+      @product.price = item.css(".j-prd-price p").text.to_i
+
+      link = item.css(".j-img img").attribute("src").value.to_s
+      @product.image_url = "https://www.jacadi.fr#{link}"
+      # 5 - Save product in database
+      @product.save!
+    end
+
   end
 
   def edit
