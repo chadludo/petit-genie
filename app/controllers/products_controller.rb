@@ -37,18 +37,18 @@ class ProductsController < ApplicationController
     # 2 - Parse the URL in nokogiri
     doc = Nokogiri::HTML(URI.open(page_url))
     # 3 - select all items with css selector
-    items = doc.css(".j-wrapper-content")
+    items = doc.css("j-wrapper-content")
     # 4 - Iterate on each item to save them
     items.each do |item|
-      product.name = item.css("h1").text.to_s
-      product.price = item.css(".j-prd-price p").text.to_i
-
-      link = item.css(".j-img img").attribute("src").value.to_s
-      product.image_url = "https://www.jacadi.fr#{link}"
-
-      # 5 - Save product in database
-      @product.save!
+      @product.name = item.css("h1").text
+      @product.price = item.css("j-prd-price p").text.to_f
+      # link = item.css("div.j-img img")["src"].to_s
+      # @product.image_url = "https://www.jacadi.fr#{link}"
     end
+    # 5 - Save product in database
+
+    @product.save!
+
   end
 
   def edit
