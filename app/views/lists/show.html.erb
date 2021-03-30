@@ -38,8 +38,8 @@
 
                 <% if product.picture.attached? %>
                   <%= image_tag product.picture, class: "card-pict" %>
-                <%# elsif %>
-                  <%# image_tag product.image_url, class: "card-pict" %>
+                <% elsif %>
+                  <%= image_tag(product.image_url, class: "card-pict") %>
                 <% else %>
                   <%= image_tag("gift.png", class: "card-pict mini") %>
                 <% end %>
@@ -51,6 +51,7 @@
                 <div class="price">
                   <p><%= product.price %> €</p>
                 </div>
+                  <p><%= product.image_url %></p>
                 <div>
                   <% product.category.each do |category| %>
                     <p><%= category.name %></p>

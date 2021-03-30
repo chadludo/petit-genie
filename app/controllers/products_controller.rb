@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
 
   def create
     # Scraping method
-    scrape
+    @product = scrape || self
 
     # Classic create method
     @list = List.find(params[:list_id])
@@ -39,16 +39,19 @@ class ProductsController < ApplicationController
     # 3 - select all items with css selector
     items = doc.css("j-wrapper-content")
     # 4 - Iterate on each item to save them
+
+    images = doc.css("div.j-img")
+    images.each do |image|
+      link = image.css("img").attr('src')
+      @product.image_url = "https://www.jacadi.fr#{link}"
+    end
+
     items.each do |item|
       @product.name = item.css("h1").text
       @product.price = item.css("j-prd-price p").text.to_f
-      # link = item.css("div.j-img img")["src"].to_s
-      # @product.image_url = "https://www.jacadi.fr#{link}"
     end
     # 5 - Save product in database
-
     @product.save!
-
   end
 
   def edit
