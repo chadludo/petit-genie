@@ -7,7 +7,7 @@
       <%= f.input :name, label: "Nom du produit", placeholder: "Couffin en osier" %>
       <%= f.input :url, label: "Lien du produit", placeholder: "www.marque.com/couffin..." %>
       <%= f.input :price, label: "Prix du produit", placeholder: "50" %>
-      <%= f.association :category, collection: Category.order(:name), as: :check_boxes %>
+      <%= f.association :category, collection: Category.order(:name), as: :select %>
       <%= f.input :picture, as: :file %>
       <%= f.button :submit, "Ajouter un nouveau produit", class: "btn-primary" %>
     <% end %>
