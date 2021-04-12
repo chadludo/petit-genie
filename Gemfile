@@ -28,12 +28,6 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'devise'
-gem 'autoprefixer-rails'
-gem 'font-awesome-sass'
-gem 'simple_form'
-gem 'nokogiri'
-gem 'open-uri'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -63,3 +57,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'devise'
+gem 'autoprefixer-rails'
+gem 'font-awesome-sass'
+gem 'simple_form'
+gem 'nokogiri'
+gem 'open-uri'
+gem 'cloudinary', '~> 1.16.0'
