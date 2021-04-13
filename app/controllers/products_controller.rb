@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
 
   def create
     # Scraping method
-    @product = scrape #|| add_product
+    @product = scrape
   end
 
   def add_product

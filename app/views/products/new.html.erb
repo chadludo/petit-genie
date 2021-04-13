@@ -1,25 +1,27 @@
 <div class="container">
-    <h2>Ajouter un nouveau produit</h2>
-    <p>Remplissez le formulaire avec les information du produit que vous souhaitez ajouter</p>
 
   <div class="form-container">
+    <h2>Ajouter un nouveau produit</h2>
+    <p class="text-form">Remplissez le formulaire avec les information du produit que vous souhaitez ajouter</p>
+
     <%= simple_form_for [@list, @product] do |f| %>
       <%= f.input :name, label: "Nom du produit", placeholder: "Couffin en osier" %>
       <%= f.input :url, label: "Lien du produit", placeholder: "www.marque.com/couffin..." %>
       <%= f.input :price, label: "Prix du produit", placeholder: "50" %>
-      <%= f.association :category, collection: Category.order(:name), as: :select %>
-      <%= f.input :picture, as: :file %>
+
+      <%= f.input :category, label: "Catégorie", collection: Category.order(:name), as: :select, prompt: "Choisissez une catégorie" %>
+
+      <%= f.input :picture, label: "Image du produit", as: :file %>
       <%= f.button :submit, "Ajouter un nouveau produit", class: "btn-primary" %>
     <% end %>
-  </div>
 
-  <p>Vous pouvez aussi copier/coller l'url de la page du produit que vous souhaitez ajouter</p>
+    <div class="spacer"></div>
 
-  <div class="form-container">
+    <p class="text-form">Vous pouvez aussi copier/coller l'url de la page du produit que vous souhaitez ajouter</p>
+
     <%= simple_form_for [@list, @product] do |f| %>
       <%= f.input :url, label: "Lien du produit", placeholder: "www.marque.com/couffin..." %>
       <%= f.button :submit, "Ajouter un nouveau produit", class: "btn-primary" %>
     <% end %>
   </div>
-
 </div>
