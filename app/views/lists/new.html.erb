@@ -1,12 +1,12 @@
 <div class="container">
-      <h2>Ajouter une nouvelle liste</h2>
-        <p>Remplissez le formulaire avec les informations de votre enfant</p>
 
   <div class="form-container">
+      <h2>Ajouter une nouvelle liste</h2>
+      <p>Remplissez le formulaire avec les informations de votre enfant</p>
       <%= simple_form_for @list do |f| %>
         <%= f.input :title, label: "Nom de votre liste", placeholder: "Liste de naissance de Philéas" %>
-        <%= f.input :birth_date, label: "Date de naissance", placeholder: "15/10/1985" %>
-        <%= f.input :picture, as: :file %>
+        <%= f.input :birth_date, :use_month_names => [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre"], label: "Date de naissance", placeholder: "15/10/1985", order: [:day, :month, :year] %>
+        <%= f.input :picture, as: :file, input_html: { class: 'd-none'}, label_html: { class: 'upload-photo'}, label: '📷 Image du produit' %>
 
       <div class="form-actions">
         <%= f.button :submit, "Créer ma liste", class: "btn-primary" %>

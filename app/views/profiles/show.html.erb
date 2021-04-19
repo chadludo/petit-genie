@@ -9,7 +9,7 @@
             <h3><%= list.title %></h3>
           </div>
           <div class="date">
-            <p><%= list.birth_date %></p>
+            <p><%= l list.birth_date, format: :default %></p>
           </div>
           <%= link_to "voir", list_path(list), class: "btn-secondary" %>
         </div>

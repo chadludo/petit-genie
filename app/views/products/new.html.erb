@@ -11,7 +11,7 @@
 
       <%= f.input :category, label: "Catégorie", collection: Category.order(:name), as: :select, prompt: "Choisissez une catégorie" %>
 
-      <%= f.input :picture, label: "Image du produit", as: :file %>
+      <%= f.input :picture, input_html: { class: 'd-none'}, label_html: { class: 'upload-photo'}, label: '📷 Image du produit', as: :file %>
       <%= f.button :submit, "Ajouter un nouveau produit", class: "btn-primary" %>
     <% end %>
 
