@@ -9,8 +9,12 @@
     "bootstrap": "^4.6.0",
     "clever-tools": "^2.8.0",
     "core-js": "^3.10.2",
+    "har-validator": "^5.1.5",
     "jquery": "^3.6.0",
+    "popper": "^1.0.1",
     "popper.js": "^1.16.1",
+    "pseudomap": "^1.0.2",
+    "request": "^2.88.0",
     "turbolinks": "^5.2.0",
     "webpack": "^5.34.0"
   },
